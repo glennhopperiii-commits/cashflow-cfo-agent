@@ -183,9 +183,18 @@ run) and the workbook download serves `public/cashflow_13wk.xlsx`. Gated by
 `PasswordGate` (access code `afp2026`, env `VITE_ACCESS_PASSWORD` in Vercel project
 settings), `X-Robots-Tag: noindex`, deployment protection disabled to match HFMA.
 
-- Live now: https://cashflow-cfo-demo-ez4uhbiu1-glenn-hoppers-projects.vercel.app
+**Deploys the same way as the rest of robocfo: push to GitHub, Vercel auto-builds.**
+The repo is public at **github.com/glennhopperiii-commits/cashflow-cfo-agent**; the
+Vercel project is git-connected (production branch `main`, root directory `frontend`).
+`.env` files are gitignored; the only secret (ANTHROPIC_API_KEY) never leaves the
+local machine, and the access code lives in Vercel project env
+(`VITE_ACCESS_PASSWORD`).
+
+- Live now: https://cashflow-cfo-demo-6hk2v1qp6-glenn-hoppers-projects.vercel.app
 - **afp.robocfo.ai** is attached to the project; needs one GoDaddy DNS record
   (A · name `afp` · value `76.76.21.21`, same as the `hfma` record) to go live.
-- Redeploy after changes: `cd frontend && vercel --prod --yes`. Refresh the demo run:
-  copy new `output/replay_capture.json` + `output/cashflow_13wk.xlsx` into
-  `frontend/public/` first.
+- Redeploy after changes: commit and `git push` (conventional commits, author
+  glenn.hopper.iii@gmail.com, no em dashes). To refresh the demo run first copy new
+  `output/replay_capture.json` + `output/cashflow_13wk.xlsx` into `frontend/public/`.
+- The Colab notebook opens straight from the repo:
+  https://colab.research.google.com/github/glennhopperiii-commits/cashflow-cfo-agent/blob/main/notebook/CashFlow_Agent.ipynb

@@ -1,0 +1,22 @@
+# Environment files (API key lives here; never committed)
+.env
+.env.*
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+
+# Output files (regenerated every run; the demo replay assets live in frontend/public)
+output/
+
+# OS
+.DS_Store
+
+# Node
+node_modules/
+dist/
+
+# Vercel project link
+.vercel/

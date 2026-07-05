@@ -1,0 +1,26 @@
+{
+  "company": "Cascade Precision Products, Inc.",
+  "as_of_close": "2026-08-21",
+  "week1_monday": "2026-08-24",
+  "num_weeks": 13,
+  "beginning_cash": 2400000,
+  "revolver_limit": 15000000,
+  "revolver_drawn": 6000000,
+  "revolver_availability": 9000000,
+  "operating_cash_floor": 1500000,
+  "sweep_buffer": 500000,
+  "draw_increment": 250000,
+  "covenant": {
+    "type": "minimum liquidity (cash + undrawn revolver availability)",
+    "threshold": 4000000,
+    "test_week": 13,
+    "consequence": "event of default",
+    "certified_to": "Ridgeline Capital Bank, agent for the lender group"
+  },
+  "term_loan": {
+    "balance": 38000000,
+    "quarterly_amortization": 1250000,
+    "quarterly_interest": 950000,
+    "debt_service_due_week": 13
+  }
+}

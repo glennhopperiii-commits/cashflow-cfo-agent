@@ -1,0 +1,46 @@
+week,date,item,category,amount,discretionary
+1,2026-08-25,"Material purchases, forecast (aerospace ramp POs, Net 30)",materials forecast,350000,False
+1,2026-08-26,"Health benefits premium, monthly",benefits,205000,False
+1,2026-08-27,Utilities & plant services,operations,70000,False
+1,2026-08-28,Biweekly payroll,payroll,745000,False
+2,2026-08-31,"Facility rent, monthly",occupancy,95000,False
+2,2026-09-01,"Material purchases, forecast (aerospace ramp POs, Net 30)",materials forecast,420000,False
+2,2026-09-03,Utilities & plant services,operations,70000,False
+3,2026-09-08,"Material purchases, forecast (aerospace ramp POs, Net 30)",materials forecast,500000,False
+3,2026-09-10,Utilities & plant services,operations,70000,False
+3,2026-09-11,Biweekly payroll,payroll,745000,False
+4,2026-09-15,"Material purchases, forecast (aerospace ramp POs, Net 30)",materials forecast,600000,False
+4,2026-09-17,Utilities & plant services,operations,70000,False
+5,2026-09-22,"Material purchases, forecast (aerospace ramp POs, Net 30)",materials forecast,700000,False
+5,2026-09-23,"Health benefits premium, monthly",benefits,205000,False
+5,2026-09-23,Semiannual property & casualty insurance premium,insurance,450000,False
+5,2026-09-24,Utilities & plant services,operations,70000,False
+5,2026-09-25,"Biweekly payroll (incl. second shift, aerospace ramp)",payroll,815000,False
+6,2026-09-28,"Facility rent, monthly",occupancy,95000,False
+6,2026-09-29,"Material purchases, forecast (aerospace ramp POs, Net 30)",materials forecast,780000,False
+6,2026-09-30,Capex deposit: Hermle C42 5-axis machining center,capex,800000,True
+6,2026-10-01,Utilities & plant services,operations,70000,False
+7,2026-10-06,"Material purchases, forecast (aerospace ramp POs, Net 30)",materials forecast,860000,False
+7,2026-10-08,Utilities & plant services,operations,70000,False
+7,2026-10-09,"Biweekly payroll (incl. second shift, aerospace ramp)",payroll,815000,False
+8,2026-10-13,"Material purchases, forecast (aerospace ramp POs, Net 30)",materials forecast,1290000,False
+8,2026-10-15,Utilities & plant services,operations,70000,False
+9,2026-10-20,"Material purchases, forecast (aerospace ramp POs, Net 30)",materials forecast,1350000,False
+9,2026-10-21,"Health benefits premium, monthly",benefits,205000,False
+9,2026-10-21,Seller note earn-out payment (Granite Peak acquisition),acquisition,1000000,False
+9,2026-10-22,Utilities & plant services,operations,70000,False
+9,2026-10-23,"Biweekly payroll (incl. second shift, aerospace ramp)",payroll,815000,False
+10,2026-10-26,"Facility rent, monthly",occupancy,95000,False
+10,2026-10-27,"Material purchases, forecast (aerospace ramp POs, Net 30)",materials forecast,1100000,False
+10,2026-10-28,Estimated federal income tax payment,tax,300000,False
+10,2026-10-29,Utilities & plant services,operations,70000,False
+11,2026-11-03,"Material purchases, forecast (aerospace ramp POs, Net 30)",materials forecast,1300000,False
+11,2026-11-05,Utilities & plant services,operations,70000,False
+11,2026-11-06,"Biweekly payroll (incl. second shift, aerospace ramp)",payroll,815000,False
+12,2026-11-10,"Material purchases, forecast (aerospace ramp POs, Net 30)",materials forecast,1420000,False
+12,2026-11-12,Utilities & plant services,operations,70000,False
+13,2026-11-17,"Material purchases, forecast (aerospace ramp POs, Net 30)",materials forecast,770000,False
+13,2026-11-19,Utilities & plant services,operations,70000,False
+13,2026-11-20,"Biweekly payroll (incl. second shift, aerospace ramp)",payroll,815000,False
+13,2026-11-20,Term loan quarterly amortization,debt service,1250000,False
+13,2026-11-20,Term loan quarterly interest,debt service,950000,False

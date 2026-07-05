@@ -127,6 +127,13 @@ narrates this correctly.
 
 ## How to run
 
+Re-verify after any change with `python3 tests/phase1_checklist.py` (all 21 control
+totals and calibrated targets, no API key needed). `tests/ws_backend_test.py` runs one
+live pipeline through the WebSocket protocol (needs the backend up and an API key).
+The backend broadcasts events to every connected WebSocket client, so multiple open
+tabs all see the same run and any of them can answer the review gate.
+
+
 ```bash
 cd cashflow-cfo-agent
 pip install -r requirements.txt          # .env needs ANTHROPIC_API_KEY

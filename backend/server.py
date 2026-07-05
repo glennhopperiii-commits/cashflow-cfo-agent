@@ -31,7 +31,7 @@ PACE = 1.0
 @asynccontextmanager
 async def lifespan(app: FastAPI):
     app.state.pipeline_status = PipelineStatus.IDLE
-    app.state.active_ws = None
+    app.state.ws_clients = set()
     app.state.review_event = asyncio.Event()
     app.state.review_response = None
     app.state.audit_logger = AuditLogger()
@@ -60,8 +60,10 @@ def _accept_review(data: dict) -> None:
 
 @app.websocket("/ws")
 async def websocket_endpoint(ws: WebSocket):
+    # Every connected client receives every event, and any client may answer
+    # the review gate. Two open tabs no longer fight over the stream.
     await ws.accept()
-    app.state.active_ws = ws
+    app.state.ws_clients.add(ws)
     try:
         while True:
             raw = await ws.receive_text()
@@ -69,19 +71,20 @@ async def websocket_endpoint(ws: WebSocket):
             if msg.get("event") == "review_submitted":
                 _accept_review(msg.get("data", {}))
     except WebSocketDisconnect:
-        if app.state.active_ws is ws:
-            app.state.active_ws = None
+        app.state.ws_clients.discard(ws)
 
 
 async def _ws_callback(event: str, data: dict) -> None:
-    ws = app.state.active_ws
-    if ws is None:
-        return
-    await ws.send_json({
+    message = {
         "event": event,
         "data": data,
         "timestamp": datetime.now(timezone.utc).isoformat(),
-    })
+    }
+    for ws in list(app.state.ws_clients):
+        try:
+            await ws.send_json(message)
+        except Exception:  # noqa: BLE001 - a dead socket must not kill the pipeline
+            app.state.ws_clients.discard(ws)
 
 
 async def _ws_review_handler(payload: dict) -> dict:

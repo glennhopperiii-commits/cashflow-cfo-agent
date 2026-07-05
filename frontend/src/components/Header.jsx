@@ -54,26 +54,26 @@ export default function Header({ pipelineStatus, onRun, onReset, onReplay, repla
           </span>
 
           {backendAvailable && (
-            <>
-              <button
-                onClick={onRun}
-                disabled={isRunning}
-                className="px-5 py-2.5 bg-[#3B5998] text-white font-semibold rounded-lg text-base
-                           hover:bg-[#2d4373] disabled:opacity-50 disabled:cursor-not-allowed
-                           transition-colors"
-              >
-                Run Forecast
-              </button>
-
-              <button
-                onClick={onReset}
-                className="px-4 py-2.5 bg-slate-200 text-slate-700 font-medium rounded-lg text-base
-                           hover:bg-slate-300 transition-colors"
-              >
-                Reset
-              </button>
-            </>
+            <button
+              onClick={onRun}
+              disabled={isRunning}
+              className="px-5 py-2.5 bg-[#3B5998] text-white font-semibold rounded-lg text-base
+                         hover:bg-[#2d4373] disabled:opacity-50 disabled:cursor-not-allowed
+                         transition-colors"
+            >
+              Run Forecast
+            </button>
           )}
+
+          <button
+            onClick={onReset}
+            disabled={pipelineStatus === 'idle' && !replayMode}
+            className="px-4 py-2.5 bg-slate-200 text-slate-700 font-medium rounded-lg text-base
+                       hover:bg-slate-300 disabled:opacity-50 disabled:cursor-not-allowed
+                       transition-colors"
+          >
+            Reset
+          </button>
 
           <button
             onClick={onReplay}

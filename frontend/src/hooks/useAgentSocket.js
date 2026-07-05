@@ -44,6 +44,7 @@ export default function useAgentSocket() {
   const wsRef = useRef(null)
   const reconnectTimer = useRef(null)
   const feedIdRef = useRef(0)
+  const replayAbortRef = useRef(false)
 
   const clearAll = useCallback(() => {
     setStepStates(initialStepStates())
@@ -245,8 +246,17 @@ export default function useAgentSocket() {
   }, [clearAll])
 
   const resetPipeline = useCallback(async () => {
-    await fetch('/api/reset', { method: 'POST' })
-  }, [])
+    // Stop any replay in flight, then reset. With a backend the server owns
+    // the state (and echoes pipeline_reset); the static demo resets locally.
+    replayAbortRef.current = true
+    setReplayMode(false)
+    if (backendAvailable) {
+      await fetch('/api/reset', { method: 'POST' })
+    } else {
+      setPipelineStatus('idle')
+      clearAll()
+    }
+  }, [backendAvailable, clearAll])
 
   const downloadReport = useCallback(async () => {
     // Live backend serves the freshly generated workbook; the deployed replay
@@ -270,6 +280,7 @@ export default function useAgentSocket() {
   }, [backendAvailable])
 
   const startReplay = useCallback(async () => {
+    replayAbortRef.current = false
     setReplayMode(true)
     setPipelineStatus('running')
     clearAll()
@@ -300,6 +311,7 @@ export default function useAgentSocket() {
     }
 
     for (let i = 0; i < events.length; i++) {
+      if (replayAbortRef.current) break
       const evt = events[i]
       if (i > 0) {
         const prev = new Date(events[i - 1].timestamp).getTime()
@@ -308,6 +320,7 @@ export default function useAgentSocket() {
         const gap = Math.min((curr - prev) * 0.3, 4000)
         if (gap > 50) await new Promise((r) => setTimeout(r, gap))
       }
+      if (replayAbortRef.current) break
       handleEvent(evt)
     }
 
